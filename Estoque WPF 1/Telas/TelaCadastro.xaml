@@ -1,0 +1,54 @@
+﻿<Window x:Class="Estoque_WPF_1.Telas.TelaCadastro"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Estoque_WPF_1.Telas"
+        mc:Ignorable="d"
+          xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="16"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"        
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        Title="Cadastro de Usuário" Height="400" Width="300" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" ToolTip="Tela de Cadastro" Icon="Imagens\casa.png" >
+        
+    <StackPanel>
+        <TextBlock Margin="10" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold" >Tela de Cadastro</TextBlock>
+        
+        <WrapPanel>
+            <TextBlock Margin="5,5,0,0" Name="MatriculaCadastro" ToolTip="Matricula Funcionário" Text="Matricula = " />
+            <TextBox  Width="120"></TextBox>
+        </WrapPanel>
+
+        <WrapPanel>
+            <TextBlock Margin="5,5,0,0" Name="NomeCadastro" ToolTip="Nome do Funcionário" Text="Nome = "/>
+            <TextBox Width="150" ></TextBox>
+        </WrapPanel>
+        
+        <WrapPanel>
+            <TextBlock Margin="5,5,0,0" Name="CpfCadastro" ToolTip="CPF" Text="CPF =  "/>
+            <TextBox Width="120"></TextBox>
+        </WrapPanel>
+
+        <WrapPanel>
+            <TextBlock Margin="5,5,0,0" Name="TelefoneCadastro" ToolTip="Telefone" Text="Telefone =  "/>
+            <TextBox Width="120" ></TextBox>
+        </WrapPanel>
+
+        <WrapPanel>
+            <TextBlock Margin="5,5,0,0" Name="SenhaCadastro" ToolTip="Senha" Text="Senha =  "/>
+            <TextBox  Width="120" ></TextBox>
+        </WrapPanel>
+        
+        <WrapPanel VerticalAlignment="Center">
+
+            <Button Margin="40" Name="ButtonCadastrar" Content="Cadastrar" Height="30" Width="92" HorizontalAlignment="Center" VerticalAlignment="Center" Click="ClickCadastrar" />
+            <Button Name="ButtonCancelar" Content="Cancelar" Height="30" Width="92" HorizontalAlignment="Center" VerticalAlignment="Center" Click="ClickCancelar" />
+
+        </WrapPanel>
+        
+    </StackPanel>
+</Window>

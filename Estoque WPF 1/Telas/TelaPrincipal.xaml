@@ -1,0 +1,58 @@
+﻿<Window x:Class="Estoque_WPF_1.Telas.TelaPrincipal"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Estoque_WPF_1.Telas"
+        mc:Ignorable="d"
+         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="18"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"        
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        Title="Estoque By Alex" Height="800" Width="1000" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" ToolTip="Tela de login" Icon="Imagens\casa.png" >
+   
+    <Grid Margin="15">
+        <Grid Margin="0,0,0,628">
+            <TextBlock Margin="10" FontSize="50" HorizontalAlignment="Center">Estoque by Alex</TextBlock>
+            <Button Name="Adicionar" Width="70" HorizontalAlignment="Right" ToolTip="Adicionar Produto" VerticalAlignment="Bottom" Style="{DynamicResource MaterialDesignFloatingActionButton}" Click="Adicionar_Click">
+                <materialDesign:PackIcon Kind="GamepadRoundOutline" Width="35" Height="35"></materialDesign:PackIcon>
+            </Button>
+        </Grid>
+        <Grid Margin="0,118,0,532">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="250"></ColumnDefinition>
+                <ColumnDefinition Width="350" ></ColumnDefinition>
+                <ColumnDefinition Width="100" ></ColumnDefinition>
+                <ColumnDefinition Width="150" ></ColumnDefinition>                
+            </Grid.ColumnDefinitions>
+            <TextBlock Margin="10" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="30" FontWeight="Bold">Imagem</TextBlock>
+            <TextBlock Margin="10" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="30" FontWeight="Bold">Descrição</TextBlock>
+            <TextBlock Margin="10" Grid.Row="0" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="25" FontWeight="Bold" TextWrapping='WrapWithOverflow'>Quan</TextBlock>
+            <TextBlock Margin="10" Grid.Row="0" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="30" FontWeight="Bold">Ações</TextBlock>
+        </Grid>
+        <Grid Margin="0,214,0,0" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="250" Name="Coluna1"></ColumnDefinition>
+                <ColumnDefinition Width="350" Name="Coluna2"></ColumnDefinition>
+                <ColumnDefinition Width="100" Name="Coluna3"></ColumnDefinition>
+                <ColumnDefinition Width="150" Name="Coluna4"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            
+            <Grid.RowDefinitions>
+                <RowDefinition Height="250"></RowDefinition>                
+            </Grid.RowDefinitions>
+           
+            <Image Margin="10" Source="/Telas/Imagens/IMG_0219.JPG.jpg" Width="200" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+
+            <TextBlock Margin="10,10" TextWrapping="WrapWithOverflow" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Justify">Jogo de panela novo 5 peças, textura lisa de espessura leve, parte interna das panelas em alumínio polido.
+não enferruja, excelentes para o dia-a-dia, ótima qualidade!
+o jogo contém panelas nº 18, 20, 22, 24 e 26.</TextBlock>
+            <TextBlock Width="50" Grid.Row="0" Grid.Column="2" VerticalAlignment="Center" FontSize="25" FontWeight="Bold">20</TextBlock>
+
+        </Grid>
+    </Grid>   
+</Window>
