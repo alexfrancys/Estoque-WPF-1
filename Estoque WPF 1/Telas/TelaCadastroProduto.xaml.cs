@@ -41,5 +41,10 @@ namespace Estoque_WPF_1.Telas
                
             }
         }
+
+        private void TextCodProd_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }

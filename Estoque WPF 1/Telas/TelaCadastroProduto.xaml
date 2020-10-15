@@ -14,7 +14,7 @@
         TextOptions.TextRenderingMode="Auto"        
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
-        Title="Estoque By Alex" Height="650" Width="400" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" ToolTip="Tela de login" Icon="Imagens\casa.png" >
+        Title="Estoque By Alex" Height="700" Width="400" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" ToolTip="Tela de login" Icon="Imagens\casa.png" >
     <Grid>
         <TextBlock Margin="20" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="30">Cadastro de Produtos</TextBlock>
         <Grid Margin="10">
@@ -22,12 +22,21 @@
                 <Image x:Name="ImagemCarregada" Margin="10,-54,0,418" VerticalAlignment="Center" HorizontalAlignment="Left" Width="233" Height="237" Stretch="Uniform" />
                 <Button x:Name="ButtonCarregarImg" Margin="10,151,10,368" Width="90" Content="Imagem" HorizontalAlignment="Right" Click="ButtonCarregarImg_Click" />
             </WrapPanel>
-            <TextBlock Margin="10,314,184,267" FontSize="16" VerticalAlignment="Center">Descrição do produto</TextBlock>
-            <TextBox HorizontalAlignment="Left" Height="80" Margin="10,351,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="335" FontFamily="Calibri" MaxLines="5"/>
-            <TextBlock Margin="10,459,184,122" FontSize="16" VerticalAlignment="Center">Quantidade de produtos:</TextBlock>
-            <TextBox HorizontalAlignment="Left" Height="30" Margin="195,449,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="59" MaxWidth="60" MaxLength="6"/>
-            <Button Content="Cadastrar" HorizontalAlignment="Left" Margin="56,535,0,0" VerticalAlignment="Top" Width="100"/>
-            <Button Content="Cancelar" HorizontalAlignment="Left" Margin="218,535,0,0" VerticalAlignment="Top" Width="100"/>
+            <TextBlock Margin="10,317,184,314" FontSize="16" VerticalAlignment="Center">Descrição do produto:</TextBlock>
+            <TextBox x:Name="TextDesProd" HorizontalAlignment="Left" Height="80" Margin="10,351,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="335" FontFamily="Calibri" MaxLines="5"/>
+            
+            <TextBlock Margin="10,448,184,183" FontSize="16" VerticalAlignment="Center" RenderTransformOrigin="0.494,2.456">Codigo Produto:</TextBlock>
+            <TextBox x:Name="TextCodProd" HorizontalAlignment="Left" Height="30" Margin="131,438,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="59" MaxWidth="60" MaxLength="6" TextChanged="TextCodProd_TextChanged"/>
+
+            <TextBlock Margin="10,480,184,152" FontSize="16" VerticalAlignment="Center">Preço unidade:</TextBlock>
+            <TextBox x:Name="TextPreProd" HorizontalAlignment="Left" Height="30" Margin="131,469,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="59" MaxWidth="60" MaxLength="6"/>
+            
+            <TextBlock Margin="10,520,184,112" FontSize="16" VerticalAlignment="Center">Quantidade de produtos:</TextBlock>
+            <TextBox x:Name="TextQtdProd" HorizontalAlignment="Left" Height="30" Margin="195,509,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="59" MaxWidth="60" MaxLength="6"/>
+            
+           
+            <Button Content="Cadastrar" HorizontalAlignment="Left" Margin="56,588,0,0" VerticalAlignment="Top" Width="100"/>
+            <Button Content="Cancelar" HorizontalAlignment="Left" Margin="221,588,0,0" VerticalAlignment="Top" Width="100"/>
 
         </Grid>
     </Grid>

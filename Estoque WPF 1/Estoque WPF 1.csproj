@@ -74,6 +74,12 @@
     </ApplicationDefinition>
     <Compile Include="Classes\Funcionario.cs" />
     <Compile Include="Classes\Produto.cs" />
+    <Compile Include="DBEstoque.cs" />
+    <Compile Include="Migrations\202010151607074_Banco de Dados Criado.cs" />
+    <Compile Include="Migrations\202010151607074_Banco de Dados Criado.designer.cs">
+      <DependentUpon>202010151607074_Banco de Dados Criado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Telas\TelaCadastro.xaml.cs">
       <DependentUpon>TelaCadastro.xaml</DependentUpon>
     </Compile>
@@ -122,6 +128,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="Migrations\202010151607074_Banco de Dados Criado.resx">
+      <DependentUpon>202010151607074_Banco de Dados Criado.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
