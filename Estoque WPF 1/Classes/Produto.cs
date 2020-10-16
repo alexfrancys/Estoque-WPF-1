@@ -15,6 +15,6 @@ namespace Estoque_WPF_1.Classes
         public string Nome { get; set; }
         public string Descricao { get; set; }
         public double Preco { get; set; }
-        public byte ImagemPr { get; set; }
+        public string ImagemPr { get; set; }
     }
 }

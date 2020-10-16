@@ -13,7 +13,7 @@
         TextOptions.TextRenderingMode="Auto"        
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
-        Title="Estoque By Alex" Height="800" Width="1000" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" ToolTip="Tela de login" Icon="Imagens\casa.png" >
+        Title="Estoque By Alex" Height="800" Width="1094" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" ToolTip="Tela de login" Icon="Imagens\casa.png" >
    
     <Grid Margin="15">
         <Grid Margin="0,0,0,628">
@@ -27,17 +27,20 @@
                 <ColumnDefinition Width="250"></ColumnDefinition>
                 <ColumnDefinition Width="350" ></ColumnDefinition>
                 <ColumnDefinition Width="100" ></ColumnDefinition>
+                <ColumnDefinition Width="100" ></ColumnDefinition>
                 <ColumnDefinition Width="150" ></ColumnDefinition>                
             </Grid.ColumnDefinitions>
             <TextBlock Margin="10" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="30" FontWeight="Bold">Imagem</TextBlock>
             <TextBlock Margin="10" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="30" FontWeight="Bold">Descrição</TextBlock>
             <TextBlock Margin="10" Grid.Row="0" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="25" FontWeight="Bold" TextWrapping='WrapWithOverflow'>Quan</TextBlock>
-            <TextBlock Margin="10" Grid.Row="0" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="30" FontWeight="Bold">Ações</TextBlock>
+            <TextBlock Margin="10" Grid.Row="0" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="25" FontWeight="Bold" TextWrapping='WrapWithOverflow'>Preço</TextBlock>
+            <TextBlock Margin="10" Grid.Row="0" Grid.Column="4" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="30" FontWeight="Bold">Ações</TextBlock>
         </Grid>
         <Grid Margin="0,214,0,0" >
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="250" Name="Coluna1"></ColumnDefinition>
-                <ColumnDefinition Width="350" Name="Coluna2"></ColumnDefinition>
+                <ColumnDefinition Width="250" Name="Coluna0"></ColumnDefinition>
+                <ColumnDefinition Width="350" Name="Coluna1"></ColumnDefinition>
+                <ColumnDefinition Width="100" Name="Coluna2"></ColumnDefinition>
                 <ColumnDefinition Width="100" Name="Coluna3"></ColumnDefinition>
                 <ColumnDefinition Width="150" Name="Coluna4"></ColumnDefinition>
             </Grid.ColumnDefinitions>
@@ -46,7 +49,7 @@
                 <RowDefinition Height="250"></RowDefinition>                
             </Grid.RowDefinitions>
            
-            <Image Margin="10" Source="/Telas/Imagens/IMG_0219.JPG.jpg" Width="200" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <Image x:Name="Imagem1" Margin="10" Source="/Telas/Imagens/IMG_0219.JPG.jpg" Width="200" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Top"/>
 
             <TextBlock Margin="10,10" TextWrapping="WrapWithOverflow" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Justify">Jogo de panela novo 5 peças, textura lisa de espessura leve, parte interna das panelas em alumínio polido.
 não enferruja, excelentes para o dia-a-dia, ótima qualidade!

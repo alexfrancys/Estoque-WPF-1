@@ -53,6 +53,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -78,6 +79,10 @@
     <Compile Include="Migrations\202010151607074_Banco de Dados Criado.cs" />
     <Compile Include="Migrations\202010151607074_Banco de Dados Criado.designer.cs">
       <DependentUpon>202010151607074_Banco de Dados Criado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010161426024_Corrigindo tipo imagem produto.cs" />
+    <Compile Include="Migrations\202010161426024_Corrigindo tipo imagem produto.designer.cs">
+      <DependentUpon>202010161426024_Corrigindo tipo imagem produto.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Telas\TelaCadastro.xaml.cs">
@@ -130,6 +135,9 @@
     </Compile>
     <EmbeddedResource Include="Migrations\202010151607074_Banco de Dados Criado.resx">
       <DependentUpon>202010151607074_Banco de Dados Criado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010161426024_Corrigindo tipo imagem produto.resx">
+      <DependentUpon>202010161426024_Corrigindo tipo imagem produto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
