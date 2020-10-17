@@ -67,18 +67,16 @@ namespace Estoque_WPF_1.Telas
 
         private void ButtonCadastrar_Click(object sender, RoutedEventArgs e)
         {
-            
-           
+                      
             DBEstoque dBEstoque = new DBEstoque();
             Produto produto = new Produto();
             
-
             produto.Codigo = int.Parse(TextCodProd.Text.Trim());
             produto.Nome = TextNomeProd.Text;
             produto.Descricao = TextDesProd.Text.ToString();
             produto.Preco = double.Parse(TextPreProd.Text.Trim());
             produto.ImagemPr = SalvarImagem();
-
+            produto.Quantidade = int.Parse(TextQtdProd.Text.Trim());
 
             dBEstoque.Produtos.Add(produto);
             dBEstoque.SaveChanges();

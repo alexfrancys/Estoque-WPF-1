@@ -14,7 +14,7 @@
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
         Title="Estoque By Alex" Height="800" Width="1094" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" ToolTip="Tela de login" Icon="Imagens\casa.png" >
-   
+
     <Grid Margin="15">
         <Grid Margin="0,0,0,628">
             <TextBlock Margin="10" FontSize="50" HorizontalAlignment="Center">Estoque by Alex</TextBlock>
@@ -22,40 +22,24 @@
                 <materialDesign:PackIcon Kind="GamepadRoundOutline" Width="35" Height="35"></materialDesign:PackIcon>
             </Button>
         </Grid>
-        <Grid Margin="0,118,0,532">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="250"></ColumnDefinition>
-                <ColumnDefinition Width="350" ></ColumnDefinition>
-                <ColumnDefinition Width="100" ></ColumnDefinition>
-                <ColumnDefinition Width="100" ></ColumnDefinition>
-                <ColumnDefinition Width="150" ></ColumnDefinition>                
-            </Grid.ColumnDefinitions>
-            <TextBlock Margin="10" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="30" FontWeight="Bold">Imagem</TextBlock>
-            <TextBlock Margin="10" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="30" FontWeight="Bold">Descrição</TextBlock>
-            <TextBlock Margin="10" Grid.Row="0" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="25" FontWeight="Bold" TextWrapping='WrapWithOverflow'>Quan</TextBlock>
-            <TextBlock Margin="10" Grid.Row="0" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="25" FontWeight="Bold" TextWrapping='WrapWithOverflow'>Preço</TextBlock>
-            <TextBlock Margin="10" Grid.Row="0" Grid.Column="4" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="30" FontWeight="Bold">Ações</TextBlock>
-        </Grid>
-        <Grid Margin="0,214,0,0" >
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="250" Name="Coluna0"></ColumnDefinition>
-                <ColumnDefinition Width="350" Name="Coluna1"></ColumnDefinition>
-                <ColumnDefinition Width="100" Name="Coluna2"></ColumnDefinition>
-                <ColumnDefinition Width="100" Name="Coluna3"></ColumnDefinition>
-                <ColumnDefinition Width="150" Name="Coluna4"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            
-            <Grid.RowDefinitions>
-                <RowDefinition Height="250"></RowDefinition>                
-            </Grid.RowDefinitions>
-           
-            <Image x:Name="Imagem1" Margin="10" Source="/Telas/Imagens/IMG_0219.JPG.jpg" Width="200" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        <DataGrid x:Name="TabelaDB" HorizontalAlignment="Center" VerticalAlignment="Center"  Height="628" Margin="0,113,0,0"  Width="1058" CanUserResizeColumns="False" CanUserReorderColumns="False" CanUserResizeRows="False">
+            <DataGrid.Columns>                
+                <DataGridTemplateColumn Header="Imagem" Width="200">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding ImagemPr}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="Código" Width="100" IsReadOnly="True" Binding="{Binding Codigo}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Descrição" Width="400" IsReadOnly="True" Binding="{Binding Descricao}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Preço" Width="100" IsReadOnly="True" Binding="{Binding Preco}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Quantidade" Width="100" IsReadOnly="True" Binding="{Binding Quantidade}"></DataGridTextColumn>
+                
+            </DataGrid.Columns>
+        </DataGrid>
 
-            <TextBlock Margin="10,10" TextWrapping="WrapWithOverflow" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Justify">Jogo de panela novo 5 peças, textura lisa de espessura leve, parte interna das panelas em alumínio polido.
-não enferruja, excelentes para o dia-a-dia, ótima qualidade!
-o jogo contém panelas nº 18, 20, 22, 24 e 26.</TextBlock>
-            <TextBlock Width="50" Grid.Row="0" Grid.Column="2" VerticalAlignment="Center" FontSize="25" FontWeight="Bold">20</TextBlock>
 
-        </Grid>
-    </Grid>   
+    </Grid>
+
 </Window>

@@ -84,6 +84,10 @@
     <Compile Include="Migrations\202010161426024_Corrigindo tipo imagem produto.designer.cs">
       <DependentUpon>202010161426024_Corrigindo tipo imagem produto.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202010161727098_Add Quantidade Produto.cs" />
+    <Compile Include="Migrations\202010161727098_Add Quantidade Produto.designer.cs">
+      <DependentUpon>202010161727098_Add Quantidade Produto.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Telas\TelaCadastro.xaml.cs">
       <DependentUpon>TelaCadastro.xaml</DependentUpon>
@@ -138,6 +142,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202010161426024_Corrigindo tipo imagem produto.resx">
       <DependentUpon>202010161426024_Corrigindo tipo imagem produto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010161727098_Add Quantidade Produto.resx">
+      <DependentUpon>202010161727098_Add Quantidade Produto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
