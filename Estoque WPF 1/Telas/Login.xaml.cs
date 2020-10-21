@@ -6,14 +6,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using System.Windows.Forms;
 
 namespace Estoque_WPF_1
 {
@@ -24,29 +17,35 @@ namespace Estoque_WPF_1
     {
         public MainWindow()
         {
-            InitializeComponent();
+            InitializeComponent();   
+           
                       
         }
+    
 
         public void ClickEntrar(object sender, RoutedEventArgs e)
         {
             if (Textosenha.Password == "admin" && Textousuario.Text == "admin")
             {
+                
                 Textousuario.Clear();
-                Textosenha.Clear();
+                Textosenha.Clear();                
                 TelaPrincipal TelaPrincipal = new TelaPrincipal();
                 TelaPrincipal.Show();
+                this.Close();
+
             }
             else
             {
-                MessageBox.Show("Login Inválido!!!", "Erro ao Logar", MessageBoxButton.OK, MessageBoxImage.Error);                
+                System.Windows.MessageBox.Show("Login Inválido!!!", "Erro ao Logar", MessageBoxButton.OK, MessageBoxImage.Error);                
             }
         }
 
         public void ClickNovoCadastro(object sender, RoutedEventArgs e)
-        {
+        {            
             TelaCadastro TelaCadastro = new TelaCadastro();
             TelaCadastro.Show();   
         }
+               
     }
 }

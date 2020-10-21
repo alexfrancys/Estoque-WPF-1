@@ -23,19 +23,19 @@
         <Button x:Name="ButtonCarregarImg" Width="90" Content="Imagem" HorizontalAlignment="Right" Click="ButtonCarregarImg_Click" Canvas.Left="274" Canvas.Top="182" />
 
         <TextBlock Margin="12,339,252,332" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center" Height="30" >Nome Produto:</TextBlock>
-        <TextBox x:Name="TextCodProd" HorizontalAlignment="Left" Height="30" Margin="131,494,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="70" MaxWidth="70" MaxLength="10"/>
+        <TextBox x:Name="TextCodProd" TabIndex="2" HorizontalAlignment="Left" Height="30" Margin="131,494,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="70" MaxWidth="70" MaxLength="10"/>
 
         <TextBlock FontSize="16" VerticalAlignment="Center" Canvas.Left="10" Canvas.Top="385">Descrição do produto:</TextBlock>
-        <TextBox x:Name="TextDesProd" HorizontalAlignment="Left" Height="80" Margin="10,409,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="335" FontFamily="Calibri" MaxLines="5"/>
+        <TextBox x:Name="TextDesProd" TabIndex="1" HorizontalAlignment="Left" Height="80" Margin="10,409,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="335" FontFamily="Calibri" MaxLines="5"/>
 
         <TextBlock Margin="10,504,243,168" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" Height="29" >Codigo Produto:</TextBlock>
-        <TextBox x:Name="TextNomeProd" HorizontalAlignment="Left" Height="30" Margin="131,330,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="190" MaxWidth="190" MaxLength="190"/>
+        <TextBox x:Name="TextNomeProd" TabIndex="0" HorizontalAlignment="Left" Height="30" Margin="131,330,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="190" MaxWidth="190" MaxLength="190"/>
 
         <TextBlock Margin="10,550,252,133" FontSize="16" VerticalAlignment="Center">Preço unidade:</TextBlock>
-        <TextBox x:Name="TextPreProd" HorizontalAlignment="Left" Height="30" Margin="122,538,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="59" MaxWidth="60" MaxLength="6"/>
+        <TextBox x:Name="TextPreProd" TabIndex="3" HorizontalAlignment="Left" Height="30" Margin="122,538,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="59" MaxWidth="60" MaxLength="6"/>
 
         <TextBlock Margin="10,587,184,94" FontSize="16" VerticalAlignment="Center" RenderTransformOrigin="0.5,1.211">Quantidade de produtos:</TextBlock>
-        <TextBox x:Name="TextQtdProd" HorizontalAlignment="Left" Height="30" Margin="195,576,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="59" MaxWidth="60" MaxLength="6"/>
+        <TextBox x:Name="TextQtdProd" TabIndex="4" HorizontalAlignment="Left" Height="30" Margin="195,576,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="59" MaxWidth="60" MaxLength="6"/>
 
 
         <Button Content="Cadastrar" HorizontalAlignment="Left" Margin="54,639,0,0" VerticalAlignment="Top" Width="100" Click="ButtonCadastrar_Click"/>

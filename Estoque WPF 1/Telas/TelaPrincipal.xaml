@@ -22,8 +22,8 @@
                 <materialDesign:PackIcon Kind="GamepadRoundOutline" Width="35" Height="35"></materialDesign:PackIcon>
             </Button>
         </Grid>
-        <DataGrid x:Name="TabelaDB" HorizontalAlignment="Center" VerticalAlignment="Center"  Height="628" Margin="0,113,0,0"  Width="1058" CanUserResizeColumns="False" CanUserReorderColumns="False" CanUserResizeRows="False">
-            <DataGrid.Columns>                
+        <DataGrid Name="TabelaDB" HorizontalAlignment="Center" VerticalAlignment="Center"  Height="628" Margin="0,113,0,0"  Width="1058" CanUserResizeColumns="False" CanUserReorderColumns="False" CanUserResizeRows="False">
+            <DataGrid.Columns>
                 <DataGridTemplateColumn Header="Imagem" Width="200">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
@@ -31,15 +31,33 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTextColumn Header="Código" Width="100" IsReadOnly="True" Binding="{Binding Codigo}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Descrição" Width="400" IsReadOnly="True" Binding="{Binding Descricao}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Preço" Width="100" IsReadOnly="True" Binding="{Binding Preco}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Quantidade" Width="100" IsReadOnly="True" Binding="{Binding Quantidade}"></DataGridTextColumn>
+                <DataGridTemplateColumn Header="Código" Width="100" IsReadOnly="True">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Name="TextCod" Text="{Binding Codigo}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
                 
+                <DataGridTemplateColumn Header="Descrição" Width="400" IsReadOnly="True">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock TextWrapping="WrapWithOverflow" Text="{Binding Descricao}"></TextBlock>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="Preço" Width="100" IsReadOnly="True" Binding="{Binding Preco}"/>
+                <DataGridTextColumn Header="Quantidade" Width="100" IsReadOnly="True" Binding="{Binding Quantidade}"/>
+                <DataGridTemplateColumn Header="Ações" Width="100">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="ButtonDeletar" Margin="5" Style="{StaticResource MaterialDesignFloatingActionMiniButton}" Click="ButtonDeletar_Click">
+                                <materialDesign:PackIcon Kind="Trash" Width="25" Height="25" ToolTip="Deletar Produto"></materialDesign:PackIcon>
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-
-
-    </Grid>
-
+    </Grid>    
 </Window>

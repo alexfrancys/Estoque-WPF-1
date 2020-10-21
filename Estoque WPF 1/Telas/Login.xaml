@@ -14,7 +14,7 @@
         TextOptions.TextRenderingMode="Auto"        
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
-        Title="Estoque By Alex" Height="400" Width="300" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" ToolTip="Tela de login" Icon="Imagens\casa.png" >
+        Title="Estoque By Alex" Height="400" Width="300" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" ToolTip="Tela de login" Icon="Imagens\casa.png">
     <StackPanel >
         <TextBlock Margin="30" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25" FontWeight="Bold">Login</TextBlock>       
         <TextBox Margin="10" Name="Textousuario" HorizontalAlignment="Center" VerticalAlignment="Center" Width="120" ToolTip="Usuário"/>

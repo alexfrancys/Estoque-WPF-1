@@ -26,7 +26,7 @@ namespace Estoque_WPF_1.Telas
     public partial class TelaCadastroProduto : Window
     {
         string caminhoimagem;
-       
+
         public TelaCadastroProduto()
         {
             InitializeComponent();
@@ -35,54 +35,57 @@ namespace Estoque_WPF_1.Telas
         public string SalvarImagem()
         {
             string tipoimagem = Path.GetExtension(caminhoimagem);
-            string codigo = TextCodProd.Text.Trim();
             string CaminhoDestinoImg = @"c:\Estoque by Alex\Imagens\" + TextCodProd.Text.Trim() + tipoimagem;
 
-            System.IO.Directory.CreateDirectory(@"c:\Estoque by Alex\Imagens"); //criar o repositório das imagens
-            System.IO.File.Copy(caminhoimagem, CaminhoDestinoImg); //copiar a imagem selecionada com o nome sendo o codigo do produto para o repositório
-
+            Directory.CreateDirectory(@"c:\Estoque by Alex\Imagens"); //criar o repositório das imagens
+            File.Copy(caminhoimagem, CaminhoDestinoImg); //copiar a imagem selecionada com o nome sendo o codigo do produto para o repositório
+            
             return CaminhoDestinoImg;
         }
 
         private void ButtonCarregarImg_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog TeladeSelecao = new OpenFileDialog();
-            TeladeSelecao.Filter = "Images (*.BMP;*.JPG;*.GIF,*.PNG,*.TIFF)|*.BMP;*.JPG;*.GIF;*.PNG;*.TIFF|" + "All files (*.*)|*.*";
-            TeladeSelecao.CheckFileExists = true;
+            OpenFileDialog teladeSelecao = new OpenFileDialog();
+            teladeSelecao.Filter = "Images (*.BMP;*.JPG;*.GIF,*.PNG,*.TIFF)|*.BMP;*.JPG;*.GIF;*.PNG;*.TIFF|" + "All files (*.*)|*.*";
+            teladeSelecao.CheckFileExists = true;
 
-                     
-            if(TeladeSelecao.ShowDialog() == true)
+
+            if (teladeSelecao.ShowDialog() == true)
             {
-                Uri FileUri = new Uri(TeladeSelecao.FileName); //Pega o local do arquivo                     
-                ImagemCarregada.Source = new BitmapImage(FileUri);
-
+                Uri fileUri = new Uri(teladeSelecao.FileName); //Pega o local do arquivo                     
+                ImagemCarregada.Source = new BitmapImage(fileUri);                
             }
-            caminhoimagem = TeladeSelecao.FileName;
+            caminhoimagem = teladeSelecao.FileName;
+            
         }
 
         private void ButtonCancelar_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
-        }           
+        }
 
         private void ButtonCadastrar_Click(object sender, RoutedEventArgs e)
         {
-                      
-            DBEstoque dBEstoque = new DBEstoque();
-            Produto produto = new Produto();
-            
-            produto.Codigo = int.Parse(TextCodProd.Text.Trim());
-            produto.Nome = TextNomeProd.Text;
-            produto.Descricao = TextDesProd.Text.ToString();
-            produto.Preco = double.Parse(TextPreProd.Text.Trim());
-            produto.ImagemPr = SalvarImagem();
-            produto.Quantidade = int.Parse(TextQtdProd.Text.Trim());
+            using (DBEstoque dBEstoque = new DBEstoque())
+            {
+                Produto produto = new Produto();
 
-            dBEstoque.Produtos.Add(produto);
-            dBEstoque.SaveChanges();
+                produto.Codigo = int.Parse(TextCodProd.Text.Trim());
+                produto.Nome = TextNomeProd.Text;
+                produto.Descricao = TextDesProd.Text.ToString();
+                produto.Preco = double.Parse(TextPreProd.Text.Trim());
+                produto.ImagemPr = SalvarImagem();
+                produto.Quantidade = int.Parse(TextQtdProd.Text.Trim());
 
-            MessageBox.Show("Produto Cadastrado", "Produto Cadastrador", MessageBoxButton.OK, MessageBoxImage.Information);
+                dBEstoque.Produtos.Add(produto);
+                dBEstoque.SaveChanges();
+            }
+                       
+            MessageBox.Show("Produto Cadastrado", "Produto Cadastrado", MessageBoxButton.OK, MessageBoxImage.Information);
 
+            TelaPrincipal TelaPrincipal = new TelaPrincipal();
+            TelaPrincipal.Show();
+            this.Close();
         }
     }
 }
