@@ -51,7 +51,7 @@ namespace Estoque_WPF_1.Telas
         private void ButtonDeletar_Click(object sender, RoutedEventArgs e)
         {
 
-            string caminhoimagem;
+            //string caminhoimagem;
 
             MessageBoxResult resultado = MessageBox.Show("Tem certeza que deseja excluir o produto?", "Deletar Produto", MessageBoxButton.YesNo, MessageBoxImage.Information);
 
@@ -68,13 +68,37 @@ namespace Estoque_WPF_1.Telas
                     dBEstoque.Produtos.Remove(y); //remove o produto do bando de dados
                     dBEstoque.SaveChanges();
 
-                    caminhoimagem = y.ImagemPr;
+                   // caminhoimagem = y.ImagemPr;
 
                     MessageBox.Show("O Produto foi Deletado", "Produto Deletado", MessageBoxButton.OK, MessageBoxImage.Information);
 
                 }
-                              
+
+                TelaPrincipal telaPrincipal = new TelaPrincipal();
+                telaPrincipal.Show();
             }
+
+        }
+
+        private void ButtonAlterar_Click(object sender, RoutedEventArgs e)
+        {
+            
+            using (DBEstoque dBEstoque = new DBEstoque())
+            {
+                var produtoTabela = (Produto)TabelaDB.SelectedCells[0].Item;
+
+                TelaAlterarProduto telaAlterarProd = new TelaAlterarProduto();
+                telaAlterarProd.Show();
+
+                telaAlterarProd.TextCodProd.Text = produtoTabela.Codigo.ToString();
+                telaAlterarProd.TextNomeProd.Text = produtoTabela.Nome.ToString();
+                telaAlterarProd.TextDesProd.Text = produtoTabela.Descricao.ToString();
+                telaAlterarProd.TextPreProd.Text = produtoTabela.Preco.ToString();
+                telaAlterarProd.TextQtdProd.Text = produtoTabela.Quantidade.ToString();
+                                               
+                                
+            }
+            this.Close();
         }
     }
 }

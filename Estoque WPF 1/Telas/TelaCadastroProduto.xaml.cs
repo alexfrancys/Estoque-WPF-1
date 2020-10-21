@@ -35,12 +35,13 @@ namespace Estoque_WPF_1.Telas
         public string SalvarImagem()
         {
             string tipoimagem = Path.GetExtension(caminhoimagem);
-            string CaminhoDestinoImg = @"c:\Estoque by Alex\Imagens\" + TextCodProd.Text.Trim() + tipoimagem;
+            string nomeAleatorio = Path.GetRandomFileName();
+            string caminhoDestinoImg = @"c:\Estoque by Alex\Imagens\" + nomeAleatorio  + tipoimagem;
 
             Directory.CreateDirectory(@"c:\Estoque by Alex\Imagens"); //criar o repositório das imagens
-            File.Copy(caminhoimagem, CaminhoDestinoImg); //copiar a imagem selecionada com o nome sendo o codigo do produto para o repositório
+            File.Copy(caminhoimagem, caminhoDestinoImg); //copiar a imagem selecionada com o nome sendo o codigo do produto para o repositório
             
-            return CaminhoDestinoImg;
+            return caminhoDestinoImg;
         }
 
         private void ButtonCarregarImg_Click(object sender, RoutedEventArgs e)
@@ -69,8 +70,7 @@ namespace Estoque_WPF_1.Telas
             using (DBEstoque dBEstoque = new DBEstoque())
             {
                 Produto produto = new Produto();
-
-                produto.Codigo = int.Parse(TextCodProd.Text.Trim());
+                                
                 produto.Nome = TextNomeProd.Text;
                 produto.Descricao = TextDesProd.Text.ToString();
                 produto.Preco = double.Parse(TextPreProd.Text.Trim());

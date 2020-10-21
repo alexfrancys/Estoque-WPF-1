@@ -17,29 +17,27 @@
         Title="Estoque By Alex" Height="750" Width="400" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" ToolTip="Tela de login" Icon="Imagens\casa.png" >
 
     <Canvas Margin="10">
-        <TextBlock Margin="20" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="30">Cadastro de Produtos</TextBlock>
+        <TextBlock VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="30" Canvas.Left="39" Canvas.Top="21">Cadastro de Produtos</TextBlock>
 
         <Image x:Name="ImagemCarregada" VerticalAlignment="Center" HorizontalAlignment="Left" Width="232" Height="237" Margin="22,-40,0,498" />
         <Button x:Name="ButtonCarregarImg" Width="90" Content="Imagem" HorizontalAlignment="Right" Click="ButtonCarregarImg_Click" Canvas.Left="274" Canvas.Top="182" />
 
         <TextBlock Margin="12,339,252,332" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center" Height="30" >Nome Produto:</TextBlock>
-        <TextBox x:Name="TextCodProd" TabIndex="2" HorizontalAlignment="Left" Height="30" Margin="131,494,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="70" MaxWidth="70" MaxLength="10"/>
+        <TextBox x:Name="TextNomeProd" TabIndex="0" HorizontalAlignment="Left" Height="30" Margin="131,330,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="190" MaxWidth="190" MaxLength="190"/>
 
         <TextBlock FontSize="16" VerticalAlignment="Center" Canvas.Left="10" Canvas.Top="385">Descrição do produto:</TextBlock>
         <TextBox x:Name="TextDesProd" TabIndex="1" HorizontalAlignment="Left" Height="80" Margin="10,409,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="335" FontFamily="Calibri" MaxLines="5"/>
 
-        <TextBlock Margin="10,504,243,168" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" Height="29" >Codigo Produto:</TextBlock>
-        <TextBox x:Name="TextNomeProd" TabIndex="0" HorizontalAlignment="Left" Height="30" Margin="131,330,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="190" MaxWidth="190" MaxLength="190"/>
 
-        <TextBlock Margin="10,550,252,133" FontSize="16" VerticalAlignment="Center">Preço unidade:</TextBlock>
-        <TextBox x:Name="TextPreProd" TabIndex="3" HorizontalAlignment="Left" Height="30" Margin="122,538,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="59" MaxWidth="60" MaxLength="6"/>
+        <TextBlock FontSize="16" VerticalAlignment="Center" Canvas.Left="10" Canvas.Top="520">Preço unidade:</TextBlock>
+        <TextBox x:Name="TextPreProd" TabIndex="2" HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" VerticalAlignment="Top" Width="59" MaxWidth="60" MaxLength="6" Canvas.Left="128" Canvas.Top="509"/>
 
-        <TextBlock Margin="10,587,184,94" FontSize="16" VerticalAlignment="Center" RenderTransformOrigin="0.5,1.211">Quantidade de produtos:</TextBlock>
-        <TextBox x:Name="TextQtdProd" TabIndex="4" HorizontalAlignment="Left" Height="30" Margin="195,576,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="59" MaxWidth="60" MaxLength="6"/>
+        <TextBlock FontSize="16" VerticalAlignment="Center" RenderTransformOrigin="0.5,1.211" Canvas.Left="10" Canvas.Top="570">Quantidade de produtos:</TextBlock>
+        <TextBox x:Name="TextQtdProd" TabIndex="3" HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" VerticalAlignment="Top" Width="59" MaxWidth="60" MaxLength="6" Canvas.Left="195" Canvas.Top="559"/>
 
 
-        <Button Content="Cadastrar" HorizontalAlignment="Left" Margin="54,639,0,0" VerticalAlignment="Top" Width="100" Click="ButtonCadastrar_Click"/>
-        <Button Content="Cancelar" HorizontalAlignment="Left" Margin="226,639,0,0" VerticalAlignment="Top" Width="100" Click="ButtonCancelar_Click"/>
+        <Button x:Name="buttonCadastrar" Content="Cadastrar" HorizontalAlignment="Left" Margin="54,639,0,0" VerticalAlignment="Top" Width="100" ToolTip="Cadastrar Produto" Click="ButtonCadastrar_Click"/>
+        <Button Content="Cancelar" HorizontalAlignment="Left" Margin="226,639,0,0" VerticalAlignment="Top" Width="100" ToolTip="Cancelar" Click="ButtonCancelar_Click"/>
 
     </Canvas>
 </Window>

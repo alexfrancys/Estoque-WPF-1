@@ -1,0 +1,35 @@
+﻿<Window x:Class="Estoque_WPF_1.Telas.TelaAlterarProduto"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Estoque_WPF_1.Telas"
+        mc:Ignorable="d"
+        Title="Estoque By Alex" Height="578.78" Width="400" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" ToolTip="Tela de Cadastro" Icon="Imagens\casa.png">
+
+    <Canvas Margin="10">
+        <TextBlock VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="30" Canvas.Left="72" Canvas.Top="10">Alterar Produtos</TextBlock>
+
+        <TextBlock FontSize="16" VerticalAlignment="Bottom" HorizontalAlignment="Center" Height="30" Canvas.Left="7" Canvas.Top="70" RenderTransformOrigin="0.563,-0.917" >Codigo Produto:</TextBlock>
+        <TextBox x:Name="TextCodProd" TabIndex="0" HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" VerticalAlignment="Top" Width="98" MaxWidth="190" MaxLength="190" Canvas.Left="128" Canvas.Top="70" IsReadOnly="True"/>
+
+        <TextBlock FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center" Height="30" Canvas.Left="10" Canvas.Top="125" >Nome Produto:</TextBlock>
+        <TextBox x:Name="TextNomeProd" TabIndex="0" HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" VerticalAlignment="Top" Width="190" MaxWidth="190" MaxLength="190" Canvas.Left="128" Canvas.Top="125"/>
+
+        <TextBlock FontSize="16" VerticalAlignment="Center" Canvas.Left="10" Canvas.Top="180">Descrição do produto:</TextBlock>
+        <TextBox x:Name="TextDesProd" TabIndex="1" HorizontalAlignment="Left" Height="117" TextWrapping="Wrap" VerticalAlignment="Top" Width="354" FontFamily="Calibri" MaxLines="5" Canvas.Left="10" Canvas.Top="206"/>
+
+
+        <TextBlock FontSize="16" VerticalAlignment="Center" Canvas.Top="347" Canvas.Left="10">Preço unidade:</TextBlock>
+        <TextBox x:Name="TextPreProd" TabIndex="2" HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" VerticalAlignment="Top" Width="59" MaxWidth="60" MaxLength="6" Canvas.Left="128" Canvas.Top="338"/>
+
+        <TextBlock FontSize="16" VerticalAlignment="Center" Canvas.Top="387" Canvas.Left="10">Quantidade de produtos:</TextBlock>
+        <TextBox x:Name="TextQtdProd" TabIndex="3" HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" VerticalAlignment="Top" Width="59" MaxWidth="60" MaxLength="6" Canvas.Left="203" Canvas.Top="378"/>
+
+
+        <Button x:Name="buttonCadastrar" Content="Alterar" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" ToolTip="Cadastrar Produto" Canvas.Left="57" Canvas.Top="484" Click="ButtonCadastrar_Click"/>
+        <Button Content="Cancelar" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" ToolTip="Cancelar" Click="ButtonCancelar_Click" Canvas.Left="229" Canvas.Top="484"/>
+
+        <TextBlock FontSize="12" VerticalAlignment="Center" Canvas.Top="431" Canvas.Left="10" TextWrapping="WrapWithOverflow" Height="38" Width="354">Obs.: Para Alterar a imagem exclua o produto e faça um novo cadastro.</TextBlock>
+    </Canvas>
+</Window>
