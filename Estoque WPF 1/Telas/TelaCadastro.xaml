@@ -13,42 +13,32 @@
         TextOptions.TextRenderingMode="Auto"        
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
-        Title="Estoque By Alex" Height="400" Width="300" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" ToolTip="Tela de Cadastro" Icon="Imagens\casa.png" >
-        
-    <StackPanel>
-        <TextBlock Margin="10" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold" >Tela de Cadastro</TextBlock>
-        
-        <WrapPanel>
-            <TextBlock Margin="5,5,0,0" Name="MatriculaCadastro" ToolTip="Matricula Funcionário" Text="Matricula = " />
-            <TextBox  Width="120"></TextBox>
-        </WrapPanel>
+        Title="Estoque By Alex" Height="380" Width="310" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" ToolTip="Tela de Cadastro" Icon="Imagens\casa.png" >
 
-        <WrapPanel>
-            <TextBlock Margin="5,5,0,0" Name="NomeCadastro" ToolTip="Nome do Funcionário" Text="Nome = "/>
-            <TextBox Width="150" ></TextBox>
-        </WrapPanel>
-        
-        <WrapPanel>
-            <TextBlock Margin="5,5,0,0" Name="CpfCadastro" ToolTip="CPF" Text="CPF =  "/>
-            <TextBox Width="120"></TextBox>
-        </WrapPanel>
+    <Canvas>
+        <TextBlock VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold" Canvas.Left="31" Canvas.Top="10" >Tela de Cadastro Usuário</TextBlock>
 
-        <WrapPanel>
-            <TextBlock Margin="5,5,0,0" Name="TelefoneCadastro" ToolTip="Telefone" Text="Telefone =  "/>
-            <TextBox Width="120" ></TextBox>
-        </WrapPanel>
+        <TextBlock ToolTip="Matricula Funcionário" Text="Matricula =" Canvas.Left="21" Canvas.Top="61" />
+        <TextBox  Name="textMatriculaCadastro"  Width="120" Canvas.Left="107" Canvas.Top="52" ToolTip="Somente Números"></TextBox>
 
-        <WrapPanel>
-            <TextBlock Margin="5,5,0,0" Name="SenhaCadastro" ToolTip="Senha" Text="Senha =  "/>
-            <TextBox  Width="120" ></TextBox>
-        </WrapPanel>
-        
-        <WrapPanel VerticalAlignment="Center">
+        <TextBlock  ToolTip="Nome do Funcionário" Text="Nome =" Canvas.Left="21" Canvas.Top="89"/>
+        <TextBox Name="textNomeCadastro" Width="150" Canvas.Left="88" Canvas.Top="80" ></TextBox>
 
-            <Button Margin="40" Name="ButtonCadastrar" Content="Cadastrar" Height="30" Width="92" HorizontalAlignment="Center" VerticalAlignment="Center" Click="ClickCadastrar" />
-            <Button Name="ButtonCancelar" Content="Cancelar" Height="30" Width="92" HorizontalAlignment="Center" VerticalAlignment="Center" Click="ClickCancelar" />
+        <TextBlock  ToolTip="CPF" Text="CPF =" Canvas.Left="21" Canvas.Top="122"/>
+        <TextBox Name="textCpfCadastro" Width="120" Canvas.Left="84" Canvas.Top="113" ToolTip="Somente Números"></TextBox>
 
-        </WrapPanel>
-        
-    </StackPanel>
+        <TextBlock ToolTip="Telefone" Text="Telefone =" Canvas.Top="149" Canvas.Left="21"/>
+        <TextBox  Name="textTelefoneCadastro" Width="120" Canvas.Left="104" Canvas.Top="141" ToolTip="Somente Números" ></TextBox>
+
+        <TextBlock ToolTip="Senha" Text="Senha =" Canvas.Left="21" Canvas.Top="183"/>
+        <PasswordBox Name="textSenhaCadastro" Width="120" Canvas.Left="88" Canvas.Top="174" ></PasswordBox>
+
+        <TextBlock ToolTip="Senha" Text="Confirme a Senha =" Canvas.Left="21" Canvas.Top="223"/>
+        <PasswordBox Name="textConfirmaSenha"  Width="120" Canvas.Left="166" Canvas.Top="214" RenderTransformOrigin="-0.185,0.61" ></PasswordBox>
+
+        <Button x:Name="ButtonCadastrar" Content="Cadastrar" Height="30" Width="92" HorizontalAlignment="Center" VerticalAlignment="Center" Click="ClickCadastrar" Canvas.Left="40" Canvas.Top="281" />
+        <Button x:Name="ButtonCancelar" Content="Cancelar" Height="30" Width="92" HorizontalAlignment="Center" VerticalAlignment="Center" Click="ClickCancelar" Canvas.Left="183" Canvas.Top="281" />
+
+
+    </Canvas>
 </Window>

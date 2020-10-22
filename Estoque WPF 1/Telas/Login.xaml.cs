@@ -1,4 +1,5 @@
-﻿using Estoque_WPF_1.Telas;
+﻿using Estoque_WPF_1.Classes;
+using Estoque_WPF_1.Telas;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +7,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Forms;
+
 
 namespace Estoque_WPF_1
 {
@@ -17,35 +18,50 @@ namespace Estoque_WPF_1
     {
         public MainWindow()
         {
-            InitializeComponent();   
-           
-                      
+            InitializeComponent();
+
         }
-    
+
+        public bool ValidarLogin()
+        {            
+            using (DBEstoque dBEstoque = new DBEstoque())
+            {
+                List<Funcionario> Listafuncionarios = new List<Funcionario>();
+
+                Listafuncionarios = dBEstoque.Funcionarios.ToList();
+
+                foreach (Funcionario x in Listafuncionarios)
+                {
+                    if (x.Matricula == (int.Parse(Textousuario.Text)) && x.Senha == Textosenha.Password)
+                    {                        
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
 
         public void ClickEntrar(object sender, RoutedEventArgs e)
         {
-            if (Textosenha.Password == "admin" && Textousuario.Text == "admin")
+            if (ValidarLogin() == true)
             {
-                
-                Textousuario.Clear();
-                Textosenha.Clear();                
+                this.Close();
                 TelaPrincipal TelaPrincipal = new TelaPrincipal();
                 TelaPrincipal.Show();
-                this.Close();
-
             }
             else
             {
-                System.Windows.MessageBox.Show("Login Inválido!!!", "Erro ao Logar", MessageBoxButton.OK, MessageBoxImage.Error);                
+                MessageBox.Show("Matricula ou Senha incorretas", "Erro de Login", MessageBoxButton.OK, MessageBoxImage.Error);                
             }
+
         }
 
         public void ClickNovoCadastro(object sender, RoutedEventArgs e)
-        {            
+        {
+            this.Hide();
             TelaCadastro TelaCadastro = new TelaCadastro();
-            TelaCadastro.Show();   
+            TelaCadastro.Show();
         }
-               
+
     }
 }

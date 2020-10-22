@@ -1,6 +1,7 @@
 ﻿using Estoque_WPF_1.Classes;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Windows;
@@ -57,7 +58,7 @@ namespace Estoque_WPF_1.Telas
 
             if (resultado == MessageBoxResult.Yes)
             {
-                this.Close();
+                                
                 using (DBEstoque dBEstoque = new DBEstoque())
                 {
 
@@ -71,11 +72,12 @@ namespace Estoque_WPF_1.Telas
                    // caminhoimagem = y.ImagemPr;
 
                     MessageBox.Show("O Produto foi Deletado", "Produto Deletado", MessageBoxButton.OK, MessageBoxImage.Information);
-
+                                                          
                 }
-
-                TelaPrincipal telaPrincipal = new TelaPrincipal();
-                telaPrincipal.Show();
+                this.Hide();
+                TelaPrincipal tela = new TelaPrincipal();
+                tela.Show();
+                
             }
 
         }

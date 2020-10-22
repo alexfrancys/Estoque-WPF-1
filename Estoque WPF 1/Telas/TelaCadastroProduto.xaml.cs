@@ -46,9 +46,11 @@ namespace Estoque_WPF_1.Telas
 
         private void ButtonCarregarImg_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog teladeSelecao = new OpenFileDialog();
-            teladeSelecao.Filter = "Images (*.BMP;*.JPG;*.GIF,*.PNG,*.TIFF)|*.BMP;*.JPG;*.GIF;*.PNG;*.TIFF|" + "All files (*.*)|*.*";
-            teladeSelecao.CheckFileExists = true;
+            OpenFileDialog teladeSelecao = new OpenFileDialog
+            {
+                Filter = "Images (*.BMP;*.JPG;*.GIF,*.PNG,*.TIFF)|*.BMP;*.JPG;*.GIF;*.PNG;*.TIFF|" + "All files (*.*)|*.*",
+                CheckFileExists = true
+            };
 
 
             if (teladeSelecao.ShowDialog() == true)
@@ -63,19 +65,22 @@ namespace Estoque_WPF_1.Telas
         private void ButtonCancelar_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+            TelaPrincipal TelaPrincipal = new TelaPrincipal();
+            TelaPrincipal.Show();
         }
 
         private void ButtonCadastrar_Click(object sender, RoutedEventArgs e)
         {
             using (DBEstoque dBEstoque = new DBEstoque())
             {
-                Produto produto = new Produto();
-                                
-                produto.Nome = TextNomeProd.Text;
-                produto.Descricao = TextDesProd.Text.ToString();
-                produto.Preco = double.Parse(TextPreProd.Text.Trim());
-                produto.ImagemPr = SalvarImagem();
-                produto.Quantidade = int.Parse(TextQtdProd.Text.Trim());
+                Produto produto = new Produto
+                {
+                    Nome = TextNomeProd.Text,
+                    Descricao = TextDesProd.Text.ToString(),
+                    Preco = double.Parse(TextPreProd.Text.Trim()),
+                    ImagemPr = SalvarImagem(),
+                    Quantidade = int.Parse(TextQtdProd.Text.Trim())
+                };
 
                 dBEstoque.Produtos.Add(produto);
                 dBEstoque.SaveChanges();

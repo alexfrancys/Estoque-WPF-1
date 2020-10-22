@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Estoque_WPF_1.Classes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,15 +27,40 @@ namespace Estoque_WPF_1.Telas
 
         public void ClickCadastrar(object sender, RoutedEventArgs e)
         {
-            TelaCadastro telaCadastro = new TelaCadastro();
-            telaCadastro.Close();
+            if (textSenhaCadastro.Password == textConfirmaSenha.Password && textSenhaCadastro.Password != null)
+            {
+                Funcionario funcionario = new Funcionario
+                {
+                    Matricula = int.Parse(textMatriculaCadastro.Text.Trim()),
+                    Nome = textNomeCadastro.Text.ToString(),
+                    Cpf = int.Parse(textMatriculaCadastro.Text.Trim()),
+                    Telefone = int.Parse(textTelefoneCadastro.Text.Trim()),
+                    Senha = textSenhaCadastro.Password.Trim()               
+                };
+              
+            using (DBEstoque dBEstoque = new DBEstoque())
+                {
+                    dBEstoque.Funcionarios.Add(funcionario);
+                    dBEstoque.SaveChanges();
+                }
+                MessageBox.Show("Usuário Cadastrado", "Cadastro", MessageBoxButton.OK, MessageBoxImage.Information);
+                this.Close();
+                MainWindow telaLogin = new MainWindow();
+                telaLogin.Show();
+            }
+            else
+            {
+                MessageBox.Show("As senhas não são iguais ou campo de senha vazia.", "Senha Inválida", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+
         }
 
 
         public void ClickCancelar(object sender, RoutedEventArgs e)
         {
-            TelaCadastro telaCadastro = new TelaCadastro();
-            telaCadastro.Close();
+            this.Close();
+            MainWindow telaLogin = new MainWindow();
+            telaLogin.Show();
         }
     }
 }
