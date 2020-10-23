@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data.Entity;
 using System.IO;
 using System.Linq;
 using System.Windows;
@@ -19,18 +20,18 @@ namespace Estoque_WPF_1.Telas
         {
             InitializeComponent();
 
-            LerProdutos();
+            LerProdutosAsync();
 
         }
 
-        public void LerProdutos()
+        public async void LerProdutosAsync()
         {
             using (DBEstoque dBEstoque = new DBEstoque())
             {
                 List<Produto> lista = new List<Produto>();
 
 
-                lista = dBEstoque.Produtos.ToList();
+                lista = await dBEstoque.Produtos.ToListAsync();
 
                 foreach (var x in lista)
                 {
@@ -49,42 +50,39 @@ namespace Estoque_WPF_1.Telas
             this.Close();
         }
 
-        private void ButtonDeletar_Click(object sender, RoutedEventArgs e)
+        private async void ButtonDeletar_ClickAsync(object sender, RoutedEventArgs e)
         {
-
-            //string caminhoimagem;
 
             MessageBoxResult resultado = MessageBox.Show("Tem certeza que deseja excluir o produto?", "Deletar Produto", MessageBoxButton.YesNo, MessageBoxImage.Information);
 
             if (resultado == MessageBoxResult.Yes)
             {
-                                
+
                 using (DBEstoque dBEstoque = new DBEstoque())
                 {
 
                     var produtotabela = (Produto)TabelaDB.SelectedCells[0].Item; //Seleciona o item da celula correspondente e adiciona implicitamente em uma variavel produto
 
-                    Produto y = dBEstoque.Produtos.Find(produtotabela.Codigo); //Procura o produto selecionado da tabela no banco de dados
+                    Produto y = await dBEstoque.Produtos.FindAsync(produtotabela.Codigo); //Procura o produto selecionado da tabela no banco de dados
 
                     dBEstoque.Produtos.Remove(y); //remove o produto do bando de dados
-                    dBEstoque.SaveChanges();
+                    await dBEstoque.SaveChangesAsync();
 
-                   // caminhoimagem = y.ImagemPr;
 
                     MessageBox.Show("O Produto foi Deletado", "Produto Deletado", MessageBoxButton.OK, MessageBoxImage.Information);
-                                                          
+
                 }
                 this.Hide();
                 TelaPrincipal tela = new TelaPrincipal();
                 tela.Show();
-                
+
             }
 
         }
 
         private void ButtonAlterar_Click(object sender, RoutedEventArgs e)
         {
-            
+
             using (DBEstoque dBEstoque = new DBEstoque())
             {
                 var produtoTabela = (Produto)TabelaDB.SelectedCells[0].Item;
@@ -97,8 +95,8 @@ namespace Estoque_WPF_1.Telas
                 telaAlterarProd.TextDesProd.Text = produtoTabela.Descricao.ToString();
                 telaAlterarProd.TextPreProd.Text = produtoTabela.Preco.ToString();
                 telaAlterarProd.TextQtdProd.Text = produtoTabela.Quantidade.ToString();
-                                               
-                                
+
+
             }
             this.Close();
         }

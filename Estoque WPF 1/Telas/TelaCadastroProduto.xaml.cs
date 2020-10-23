@@ -69,7 +69,7 @@ namespace Estoque_WPF_1.Telas
             TelaPrincipal.Show();
         }
 
-        private void ButtonCadastrar_Click(object sender, RoutedEventArgs e)
+        private async void ButtonCadastrar_ClickAsync(object sender, RoutedEventArgs e)
         {
             using (DBEstoque dBEstoque = new DBEstoque())
             {
@@ -83,7 +83,7 @@ namespace Estoque_WPF_1.Telas
                 };
 
                 dBEstoque.Produtos.Add(produto);
-                dBEstoque.SaveChanges();
+                await dBEstoque.SaveChangesAsync();
             }
                        
             MessageBox.Show("Produto Cadastrado", "Produto Cadastrado", MessageBoxButton.OK, MessageBoxImage.Information);

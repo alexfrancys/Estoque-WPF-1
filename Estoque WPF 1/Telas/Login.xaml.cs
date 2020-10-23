@@ -2,6 +2,7 @@
 using Estoque_WPF_1.Telas;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
@@ -22,13 +23,13 @@ namespace Estoque_WPF_1
 
         }
 
-        public bool ValidarLogin()
+        public async Task<bool> ValidarLoginAsync()
         {            
             using (DBEstoque dBEstoque = new DBEstoque())
             {
                 List<Funcionario> Listafuncionarios = new List<Funcionario>();
 
-                Listafuncionarios = dBEstoque.Funcionarios.ToList();
+                Listafuncionarios = await dBEstoque.Funcionarios.ToListAsync();
 
                 foreach (Funcionario x in Listafuncionarios)
                 {
@@ -41,17 +42,18 @@ namespace Estoque_WPF_1
             return false;
         }
 
-        public void ClickEntrar(object sender, RoutedEventArgs e)
+        public async void ClickEntrarAsync(object sender, RoutedEventArgs e)
         {
-            if (ValidarLogin() == true)
+            if (await ValidarLoginAsync() == true)
             {
-                this.Close();
+                this.Hide();
                 TelaPrincipal TelaPrincipal = new TelaPrincipal();
                 TelaPrincipal.Show();
             }
             else
             {
-                MessageBox.Show("Matricula ou Senha incorretas", "Erro de Login", MessageBoxButton.OK, MessageBoxImage.Error);                
+                MessageBox.Show("Matricula ou Senha incorretas", "Erro de Login", MessageBoxButton.OK, MessageBoxImage.Error);
+                this.Show();
             }
 
         }

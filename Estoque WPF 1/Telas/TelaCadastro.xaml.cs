@@ -25,7 +25,7 @@ namespace Estoque_WPF_1.Telas
             InitializeComponent();
         }
 
-        public void ClickCadastrar(object sender, RoutedEventArgs e)
+        public async void ClickCadastrarAsync(object sender, RoutedEventArgs e)
         {
             if (textSenhaCadastro.Password == textConfirmaSenha.Password && textSenhaCadastro.Password != null)
             {
@@ -41,7 +41,7 @@ namespace Estoque_WPF_1.Telas
             using (DBEstoque dBEstoque = new DBEstoque())
                 {
                     dBEstoque.Funcionarios.Add(funcionario);
-                    dBEstoque.SaveChanges();
+                   await dBEstoque.SaveChangesAsync();
                 }
                 MessageBox.Show("Usuário Cadastrado", "Cadastro", MessageBoxButton.OK, MessageBoxImage.Information);
                 this.Close();

@@ -36,7 +36,7 @@
         <TextBox x:Name="TextQtdProd" TabIndex="3" HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" VerticalAlignment="Top" Width="59" MaxWidth="60" MaxLength="6" Canvas.Left="195" Canvas.Top="559"/>
 
 
-        <Button x:Name="buttonCadastrar" Content="Cadastrar" HorizontalAlignment="Left" Margin="54,639,0,0" VerticalAlignment="Top" Width="100" ToolTip="Cadastrar Produto" Click="ButtonCadastrar_Click"/>
+        <Button x:Name="buttonCadastrar" Content="Cadastrar" HorizontalAlignment="Left" Margin="54,639,0,0" VerticalAlignment="Top" Width="100" ToolTip="Cadastrar Produto" Click="ButtonCadastrar_ClickAsync"/>
         <Button Content="Cancelar" HorizontalAlignment="Left" Margin="226,639,0,0" VerticalAlignment="Top" Width="100" ToolTip="Cancelar" Click="ButtonCancelar_Click"/>
 
     </Canvas>

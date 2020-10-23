@@ -27,7 +27,7 @@
         <TextBox x:Name="TextQtdProd" TabIndex="3" HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" VerticalAlignment="Top" Width="59" MaxWidth="60" MaxLength="6" Canvas.Left="203" Canvas.Top="378"/>
 
 
-        <Button x:Name="buttonCadastrar" Content="Alterar" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" ToolTip="Cadastrar Produto" Canvas.Left="57" Canvas.Top="484" Click="ButtonCadastrar_Click"/>
+        <Button x:Name="buttonCadastrar" Content="Alterar" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" ToolTip="Cadastrar Produto" Canvas.Left="57" Canvas.Top="484" Click="ButtonCadastrar_ClickAsync"/>
         <Button Content="Cancelar" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" ToolTip="Cancelar" Click="ButtonCancelar_Click" Canvas.Left="229" Canvas.Top="484"/>
 
         <TextBlock FontSize="12" VerticalAlignment="Center" Canvas.Top="431" Canvas.Left="10" TextWrapping="WrapWithOverflow" Height="38" Width="354">Obs.: Para Alterar a imagem exclua o produto e faça um novo cadastro.</TextBlock>

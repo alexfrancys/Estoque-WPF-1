@@ -1,6 +1,7 @@
 ﻿using Estoque_WPF_1.Classes;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,7 +26,7 @@ namespace Estoque_WPF_1.Telas
             InitializeComponent();
         }
 
-        private void ButtonCadastrar_Click(object sender, RoutedEventArgs e)
+        private async void ButtonCadastrar_ClickAsync(object sender, RoutedEventArgs e)
         {
             
             MessageBoxResult resultado = MessageBox.Show("Tem certeza que deseja alterar o produto?", "Alterar Produto", MessageBoxButton.YesNo, MessageBoxImage.Information);
@@ -34,14 +35,15 @@ namespace Estoque_WPF_1.Telas
             {
                 using (DBEstoque dBEstoque = new DBEstoque())
                 {
-                    Produto produto = new Produto();
+                    Produto produto = new Produto
+                    {
+                        Nome = TextNomeProd.Text,
+                        Descricao = TextDesProd.Text.ToString(),
+                        Preco = double.Parse(TextPreProd.Text.Trim()),
+                        Quantidade = int.Parse(TextQtdProd.Text.Trim())
+                    };
 
-                    produto.Nome = TextNomeProd.Text;
-                    produto.Descricao = TextDesProd.Text.ToString();
-                    produto.Preco = double.Parse(TextPreProd.Text.Trim());
-                    produto.Quantidade = int.Parse(TextQtdProd.Text.Trim());
-
-                    var produtoselecionado = dBEstoque.Produtos.Where<Produto>(x => x.Codigo.ToString() == TextCodProd.Text).FirstOrDefault();
+                    var produtoselecionado = await dBEstoque.Produtos.Where<Produto>(x => x.Codigo.ToString() == TextCodProd.Text).FirstOrDefaultAsync();
 
                     produtoselecionado.Codigo = int.Parse(TextCodProd.Text.ToString());
                     produtoselecionado.Nome = TextNomeProd.Text;
@@ -50,7 +52,7 @@ namespace Estoque_WPF_1.Telas
                     produtoselecionado.Quantidade = int.Parse(TextQtdProd.Text.Trim());
 
 
-                    dBEstoque.SaveChanges();
+                   await dBEstoque.SaveChangesAsync();
                 }
 
                 MessageBox.Show("Produto Alterado com sucesso", "Produto Alterado", MessageBoxButton.OK, MessageBoxImage.Information);

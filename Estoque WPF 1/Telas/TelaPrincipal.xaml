@@ -51,7 +51,7 @@
                 <DataGridTemplateColumn Header="Ações">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button x:Name="ButtonDeletar" Style="{StaticResource MaterialDesignFloatingActionMiniButton}" Click="ButtonDeletar_Click">
+                            <Button x:Name="ButtonDeletar" Style="{StaticResource MaterialDesignFloatingActionMiniButton}" Click="ButtonDeletar_ClickAsync">
                                 <materialDesign:PackIcon Kind="Trash" Width="25" Height="25" ToolTip="Deletar Produto"></materialDesign:PackIcon>
                             </Button>                            
                         </DataTemplate>
