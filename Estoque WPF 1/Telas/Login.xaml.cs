@@ -24,20 +24,28 @@ namespace Estoque_WPF_1
         }
 
         public async Task<bool> ValidarLoginAsync()
-        {            
-            using (DBEstoque dBEstoque = new DBEstoque())
+        {
+            try
             {
-                List<Funcionario> Listafuncionarios = new List<Funcionario>();
-
-                Listafuncionarios = await dBEstoque.Funcionarios.ToListAsync();
-
-                foreach (Funcionario x in Listafuncionarios)
+                using (DBEstoque dBEstoque = new DBEstoque())
                 {
-                    if (x.Matricula == (int.Parse(Textousuario.Text)) && x.Senha == Textosenha.Password)
-                    {                        
-                        return true;
+                    List<Funcionario> Listafuncionarios = new List<Funcionario>();
+
+                    Listafuncionarios = await dBEstoque.Funcionarios.ToListAsync();
+
+                    foreach (Funcionario x in Listafuncionarios)
+                    {
+                        if (x.Matricula == (int.Parse(Textousuario.Text)) && x.Senha == Textosenha.Password)
+                        {
+                            return true;
+                        }
                     }
                 }
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + "\nA Matricula deve conter somente números." , "Erro", MessageBoxButton.OK , MessageBoxImage.Error);               
             }
             return false;
         }

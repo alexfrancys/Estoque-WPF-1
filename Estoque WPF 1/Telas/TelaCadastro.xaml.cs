@@ -27,31 +27,39 @@ namespace Estoque_WPF_1.Telas
 
         public async void ClickCadastrarAsync(object sender, RoutedEventArgs e)
         {
-            if (textSenhaCadastro.Password == textConfirmaSenha.Password && textSenhaCadastro.Password != null)
+            try
             {
-                Funcionario funcionario = new Funcionario
+                if (textSenhaCadastro.Password == textConfirmaSenha.Password && textSenhaCadastro.Password != null)
                 {
-                    Matricula = int.Parse(textMatriculaCadastro.Text.Trim()),
-                    Nome = textNomeCadastro.Text.ToString(),
-                    Cpf = int.Parse(textMatriculaCadastro.Text.Trim()),
-                    Telefone = int.Parse(textTelefoneCadastro.Text.Trim()),
-                    Senha = textSenhaCadastro.Password.Trim()               
-                };
-              
-            using (DBEstoque dBEstoque = new DBEstoque())
-                {
-                    dBEstoque.Funcionarios.Add(funcionario);
-                   await dBEstoque.SaveChangesAsync();
+                    Funcionario funcionario = new Funcionario
+                    {
+                        Matricula = int.Parse(textMatriculaCadastro.Text.Trim()),
+                        Nome = textNomeCadastro.Text.ToString(),
+                        Cpf = int.Parse(textCpfCadastro.Text.Trim()),
+                        Telefone = int.Parse(textTelefoneCadastro.Text.Trim()),
+                        Senha = textSenhaCadastro.Password.Trim()
+                    };
+
+                    using (DBEstoque dBEstoque = new DBEstoque())
+                    {
+                        dBEstoque.Funcionarios.Add(funcionario);
+                        await dBEstoque.SaveChangesAsync();
+                    }
+                    MessageBox.Show("Usuário Cadastrado", "Cadastro", MessageBoxButton.OK, MessageBoxImage.Information);
+                    this.Close();
+                    MainWindow telaLogin = new MainWindow();
+                    telaLogin.Show();
                 }
-                MessageBox.Show("Usuário Cadastrado", "Cadastro", MessageBoxButton.OK, MessageBoxImage.Information);
-                this.Close();
-                MainWindow telaLogin = new MainWindow();
-                telaLogin.Show();
+                else
+                {
+                    MessageBox.Show("As senhas não são iguais ou campo de senha vazia.", "Senha Inválida", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
             }
-            else
+            catch(Exception ex)
             {
-                MessageBox.Show("As senhas não são iguais ou campo de senha vazia.", "Senha Inválida", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show(ex.Message + "\nOs Campos Matricula, CPF e Telefone devem conter somente números.", "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+
 
         }
 

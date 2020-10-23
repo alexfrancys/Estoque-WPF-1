@@ -34,32 +34,46 @@ namespace Estoque_WPF_1.Telas
 
         public string SalvarImagem()
         {
-            string tipoimagem = Path.GetExtension(caminhoimagem);
-            string nomeAleatorio = Path.GetRandomFileName();
-            string caminhoDestinoImg = @"c:\Estoque by Alex\Imagens\" + nomeAleatorio  + tipoimagem;
+            try
+            {
+                string tipoimagem = Path.GetExtension(caminhoimagem);
+                string nomeAleatorio = Path.GetRandomFileName();
+                string caminhoDestinoImg = @"c:\Estoque by Alex\Imagens\" + nomeAleatorio + tipoimagem;
 
-            Directory.CreateDirectory(@"c:\Estoque by Alex\Imagens"); //criar o repositório das imagens
-            File.Copy(caminhoimagem, caminhoDestinoImg); //copiar a imagem selecionada com o nome sendo o codigo do produto para o repositório
-            
-            return caminhoDestinoImg;
+                Directory.CreateDirectory(@"c:\Estoque by Alex\Imagens"); //criar o repositório das imagens
+                File.Copy(caminhoimagem, caminhoDestinoImg); //copiar a imagem selecionada com o nome sendo o codigo do produto para o repositório
+
+                return caminhoDestinoImg;
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
+                return null;
+            }
         }
 
         private void ButtonCarregarImg_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog teladeSelecao = new OpenFileDialog
+            try
             {
-                Filter = "Images (*.BMP;*.JPG;*.GIF,*.PNG,*.TIFF)|*.BMP;*.JPG;*.GIF;*.PNG;*.TIFF|" + "All files (*.*)|*.*",
-                CheckFileExists = true
-            };
+                OpenFileDialog teladeSelecao = new OpenFileDialog
+                {
+                    Filter = "Images (*.BMP;*.JPG;*.GIF,*.PNG,*.TIFF)|*.BMP;*.JPG;*.GIF;*.PNG;*.TIFF|" + "All files (*.*)|*.*",
+                    CheckFileExists = true
+                };
 
 
-            if (teladeSelecao.ShowDialog() == true)
-            {
-                Uri fileUri = new Uri(teladeSelecao.FileName); //Pega o local do arquivo                     
-                ImagemCarregada.Source = new BitmapImage(fileUri);                
+                if (teladeSelecao.ShowDialog() == true)
+                {
+                    Uri fileUri = new Uri(teladeSelecao.FileName); //Pega o local do arquivo                     
+                    ImagemCarregada.Source = new BitmapImage(fileUri);
+                }
+                caminhoimagem = teladeSelecao.FileName;
             }
-            caminhoimagem = teladeSelecao.FileName;
-            
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void ButtonCancelar_Click(object sender, RoutedEventArgs e)
@@ -71,22 +85,30 @@ namespace Estoque_WPF_1.Telas
 
         private async void ButtonCadastrar_ClickAsync(object sender, RoutedEventArgs e)
         {
-            using (DBEstoque dBEstoque = new DBEstoque())
+            try
             {
-                Produto produto = new Produto
+                using (DBEstoque dBEstoque = new DBEstoque())
                 {
-                    Nome = TextNomeProd.Text,
-                    Descricao = TextDesProd.Text.ToString(),
-                    Preco = double.Parse(TextPreProd.Text.Trim()),
-                    ImagemPr = SalvarImagem(),
-                    Quantidade = int.Parse(TextQtdProd.Text.Trim())
-                };
+                    Produto produto = new Produto
+                    {
+                        Nome = TextNomeProd.Text,
+                        Descricao = TextDesProd.Text.ToString(),
+                        Preco = double.Parse(TextPreProd.Text.Trim()),
+                        ImagemPr = SalvarImagem(),
+                        Quantidade = int.Parse(TextQtdProd.Text.Trim())
+                    };
 
-                dBEstoque.Produtos.Add(produto);
-                await dBEstoque.SaveChangesAsync();
+                    dBEstoque.Produtos.Add(produto);
+                    await dBEstoque.SaveChangesAsync();
+                }
+
+                MessageBox.Show("Produto Cadastrado", "Produto Cadastrado", MessageBoxButton.OK, MessageBoxImage.Information);
             }
-                       
-            MessageBox.Show("Produto Cadastrado", "Produto Cadastrado", MessageBoxButton.OK, MessageBoxImage.Information);
+
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message + "\nOs campos Preço e Quantidade aceitam somente números. Produto não Cadastrado.", "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
 
             TelaPrincipal TelaPrincipal = new TelaPrincipal();
             TelaPrincipal.Show();

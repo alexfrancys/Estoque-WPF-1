@@ -26,17 +26,24 @@ namespace Estoque_WPF_1.Telas
 
         public async void LerProdutosAsync()
         {
-            using (DBEstoque dBEstoque = new DBEstoque())
+            try
             {
-                List<Produto> lista = new List<Produto>();
-
-
-                lista = await dBEstoque.Produtos.ToListAsync();
-
-                foreach (var x in lista)
+                using (DBEstoque dBEstoque = new DBEstoque())
                 {
-                    TabelaDB.Items.Add(x);
+                    List<Produto> lista = new List<Produto>();
+
+
+                    lista = await dBEstoque.Produtos.ToListAsync();
+
+                    foreach (var x in lista)
+                    {
+                        TabelaDB.Items.Add(x);
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -57,21 +64,29 @@ namespace Estoque_WPF_1.Telas
 
             if (resultado == MessageBoxResult.Yes)
             {
-
-                using (DBEstoque dBEstoque = new DBEstoque())
+                try
                 {
 
-                    var produtotabela = (Produto)TabelaDB.SelectedCells[0].Item; //Seleciona o item da celula correspondente e adiciona implicitamente em uma variavel produto
+                    using (DBEstoque dBEstoque = new DBEstoque())
+                    {
 
-                    Produto y = await dBEstoque.Produtos.FindAsync(produtotabela.Codigo); //Procura o produto selecionado da tabela no banco de dados
+                        var produtotabela = (Produto)TabelaDB.SelectedCells[0].Item; //Seleciona o item da celula correspondente e adiciona implicitamente em uma variavel produto
 
-                    dBEstoque.Produtos.Remove(y); //remove o produto do bando de dados
-                    await dBEstoque.SaveChangesAsync();
+                        Produto y = await dBEstoque.Produtos.FindAsync(produtotabela.Codigo); //Procura o produto selecionado da tabela no banco de dados
+
+                        dBEstoque.Produtos.Remove(y); //remove o produto do bando de dados
+                        await dBEstoque.SaveChangesAsync();
 
 
-                    MessageBox.Show("O Produto foi Deletado", "Produto Deletado", MessageBoxButton.OK, MessageBoxImage.Information);
+                        MessageBox.Show("O Produto foi Deletado", "Produto Deletado", MessageBoxButton.OK, MessageBoxImage.Information);
 
+                    }
                 }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+
                 this.Hide();
                 TelaPrincipal tela = new TelaPrincipal();
                 tela.Show();

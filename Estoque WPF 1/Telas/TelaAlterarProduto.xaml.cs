@@ -28,34 +28,42 @@ namespace Estoque_WPF_1.Telas
 
         private async void ButtonCadastrar_ClickAsync(object sender, RoutedEventArgs e)
         {
-            
+
             MessageBoxResult resultado = MessageBox.Show("Tem certeza que deseja alterar o produto?", "Alterar Produto", MessageBoxButton.YesNo, MessageBoxImage.Information);
 
             if (resultado == MessageBoxResult.Yes)
             {
-                using (DBEstoque dBEstoque = new DBEstoque())
+                try
                 {
-                    Produto produto = new Produto
+                    using (DBEstoque dBEstoque = new DBEstoque())
                     {
-                        Nome = TextNomeProd.Text,
-                        Descricao = TextDesProd.Text.ToString(),
-                        Preco = double.Parse(TextPreProd.Text.Trim()),
-                        Quantidade = int.Parse(TextQtdProd.Text.Trim())
-                    };
+                        Produto produto = new Produto
+                        {
+                            Nome = TextNomeProd.Text,
+                            Descricao = TextDesProd.Text.ToString(),
+                            Preco = double.Parse(TextPreProd.Text.Trim()),
+                            Quantidade = int.Parse(TextQtdProd.Text.Trim())
+                        };
 
-                    var produtoselecionado = await dBEstoque.Produtos.Where<Produto>(x => x.Codigo.ToString() == TextCodProd.Text).FirstOrDefaultAsync();
+                        var produtoselecionado = await dBEstoque.Produtos.Where<Produto>(x => x.Codigo.ToString() == TextCodProd.Text).FirstOrDefaultAsync();
 
-                    produtoselecionado.Codigo = int.Parse(TextCodProd.Text.ToString());
-                    produtoselecionado.Nome = TextNomeProd.Text;
-                    produtoselecionado.Descricao = TextDesProd.Text.ToString();
-                    produtoselecionado.Preco = double.Parse(TextPreProd.Text.Trim());
-                    produtoselecionado.Quantidade = int.Parse(TextQtdProd.Text.Trim());
+                        produtoselecionado.Codigo = int.Parse(TextCodProd.Text.ToString());
+                        produtoselecionado.Nome = TextNomeProd.Text;
+                        produtoselecionado.Descricao = TextDesProd.Text.ToString();
+                        produtoselecionado.Preco = double.Parse(TextPreProd.Text.Trim());
+                        produtoselecionado.Quantidade = int.Parse(TextQtdProd.Text.Trim());
 
 
-                   await dBEstoque.SaveChangesAsync();
+                        await dBEstoque.SaveChangesAsync();
+                    }
+
+                    MessageBox.Show("Produto Alterado com sucesso", "Produto Alterado", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show(ex.Message + "\nProduto não Alterado.", "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
 
-                MessageBox.Show("Produto Alterado com sucesso", "Produto Alterado", MessageBoxButton.OK, MessageBoxImage.Information);
             }
 
             TelaPrincipal TelaPrincipal = new TelaPrincipal();
